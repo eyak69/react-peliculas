@@ -15,6 +15,7 @@ export default function EditarPelicula() {
         <>
             <h3>Editar Pelicula</h3>
             <FormularioPelicula
+                actoresSeleccionados={[]}
                 cinesSeleccionados={cinesSeleccionados}
                 cinesNoSeleccionados={cinesNoSeleccionados}
                 generosNoSeleccionados={generosNoSeleccionados}

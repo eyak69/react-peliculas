@@ -4,3 +4,10 @@ export interface actorCreacionDTO {
     foto?: File;
     fotoURL?:string;
 }
+
+export interface actorPeliculaDTO {
+    id: number;
+    nombre: string;
+    personaje: string;
+    foto: string;
+}
