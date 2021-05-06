@@ -16,22 +16,22 @@ import RedirectARoot from "./utils/RedirectARoot";
 const rutas = [
     {path:'/genero/crear', componente: CrearGenero},
     {path:'/genero/editar/:id(\\d+)', componente: EditarGenero},
-    {path:'/generos', componente: IndiceGeneros, exact:true},
+    {path:'/generos', componente: IndiceGeneros, exact: true},
 
     {path:'/actor/crear', componente: CrearActor},
     {path:'/actor/editar/:id(\\d+)', componente: EditarActor},
-    {path:'/actores', componente: IndiceActores, exact:true},
+    {path:'/actores', componente: IndiceActores, exact: true},
 
     {path:'/cine/crear', componente: CrearCine},
     {path:'/cine/editar/:id(\\d+)', componente: EditarCine},
-    {path:'/cines', componente: IndiceCines, exact:true},
+    {path:'/cines', componente: IndiceCines, exact: true},
 
     {path:'/pelicula/crear', componente: CrearPelicula},
     {path:'/pelicula/editar/:id(\\d+)', componente: EditarPelicula},
-    {path:'/pelicula/filtrar', componente: FiltroPeliculas, exact:true},
+    {path:'/pelicula/filtrar', componente: FiltroPeliculas, exact: true},
 
     {path:'/', componente: LandingPage, exact: true},
 
-    {path:'*', componente: RedirectARoot, exact: true}
+   // {path:'*', componente: RedirectARoot}
 ];
 export default rutas;
