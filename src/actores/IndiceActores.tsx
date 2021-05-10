@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FormularioActor from "./FormularioActor";
 
 export default function IndiceActores() {
     return (

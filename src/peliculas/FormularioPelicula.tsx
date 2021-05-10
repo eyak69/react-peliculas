@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import SelectorMultiple, { selectorMultipleModel } from "../utils/SelectorMultiple";
 import { generoDTO } from "../generos/genero.model";
 import { cineDTO } from "../cines/cine.model";
-import TypeAheadsActores from "../actores/TypeAheadsActores";
 import TypeAheadActores from "../actores/TypeAheadsActores";
 import { actorPeliculaDTO } from "../actores/actor.model";
 

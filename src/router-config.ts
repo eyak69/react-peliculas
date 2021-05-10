@@ -11,7 +11,6 @@ import LandingPage from "./LandingPage";
 import CrearPelicula from "./peliculas/CrearPelicula";
 import EditarPelicula from "./peliculas/EditarPelicula";
 import FiltroPeliculas from "./peliculas/FiltroPeliculas";
-import RedirectARoot from "./utils/RedirectARoot";
 
 const rutas = [
     {path:'/genero/crear', componente: CrearGenero},
