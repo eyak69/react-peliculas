@@ -1,11 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Boton from "../utils/Boton";
 import { urlGeneros } from "../utils/endpoints";
 import IndiceEntidad from "../utils/IndiceEntidad";
-import ListadoGenerico from "../utils/ListadoGenerico";
-import Paginacion from "../utils/Paginacion";
 import { generoDTO } from "./genero.model";
 
 export default function IndiceGeneros() {

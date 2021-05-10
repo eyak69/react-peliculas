@@ -1,6 +1,4 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
-import { Link } from "react-router-dom";
 import { generoDTO } from "../generos/genero.model";
 import Boton from "../utils/Boton";
 

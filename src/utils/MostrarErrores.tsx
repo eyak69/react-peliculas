@@ -1,4 +1,3 @@
-import { ErrorMessage } from "formik";
 
 export default function MostrarErrores(props: mostrarErroresProps) {
     const style = {color: 'red' }

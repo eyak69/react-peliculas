@@ -1,9 +1,7 @@
 import './App.css';
 import Menu from './utils/Menu';
 import { Route } from 'react-router-dom';
-import IndiceGeneros from './generos/IndiceGeneros';
 import { BrowserRouter } from 'react-router-dom';
-import LandingPage from './LandingPage';
 import rutas from './router-config';
 import configurarValidaciones from './validaciones';
 
