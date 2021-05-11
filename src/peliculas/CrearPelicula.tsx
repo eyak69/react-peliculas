@@ -19,7 +19,7 @@ export default function CrearPelicula() {
                 cinesSeleccionados={[]}
                 generosNoSeleccionados={generos}
                 generosSeleccionados={[]}
-                modelo={{ titulo: '', enCineas: false, trailer: '', fechaLanzamiento: undefined }}
+                modelo={{ titulo: '', enCines: false, trailer: '', fechaLanzamiento: undefined }}
                 onSubmit={valores => console.log(valores)}
             ></FormularioPelicula>
         </>

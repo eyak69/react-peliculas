@@ -6,12 +6,13 @@
 
     export interface peliculaCreacionDTO{
         titulo: string;
-        enCineas: boolean;
+        enCines: boolean;
         trailer: string;
         fechaLanzamiento?: Date;
         poster?: File;
         posterURL?:string;
         generosIds?: number[];
+        resumen?: string;
     }
 
     export interface landingPageDTO {

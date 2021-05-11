@@ -20,7 +20,7 @@ export default function EditarPelicula() {
                 cinesNoSeleccionados={cinesNoSeleccionados}
                 generosNoSeleccionados={generosNoSeleccionados}
                 generosSeleccionados={generosSeleccionados}
-                modelo={{ titulo: 'Spider-Man', enCineas: false, trailer: '', fechaLanzamiento: new Date('2020-10-06T00:00:00'), posterURL: 'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg' }}
+                modelo={{ titulo: 'Spider-Man', enCines: false, trailer: '', fechaLanzamiento: new Date('2020-10-06T00:00:00'), posterURL: 'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg' }}
                 onSubmit={valores => console.log(valores)}
             />
 
