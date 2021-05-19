@@ -1,25 +1,29 @@
 import { Form, Formik, FormikHelpers } from "formik";
-import { peliculaCreacionDTO } from "./peliculas.model";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import FormGroupText from "../utils/FormGroupText";
+import { actorPeliculaDTO } from "../actores/actor.model";
+import TypeAheadActores from "../actores/TypeAheadsActores";
+import { cineDTO } from "../cines/cine.model";
+import { generoDTO } from "../generos/genero.model";
+import Button from "../utils/Button";
 import FormGroupCheckbox from "../utils/FormGroupCheckbox";
 import FormGroupFecha from "../utils/FormGroupFecha";
 import FormGroupImagen from "../utils/FormGroupImagen";
-import Boton from "../utils/Boton";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import FormGroupText from "../utils/FormGroupText";
 import SelectorMultiple, { selectorMultipleModel } from "../utils/SelectorMultiple";
-import { generoDTO } from "../generos/genero.model";
-import { cineDTO } from "../cines/cine.model";
-import TypeAheadActores from "../actores/TypeAheadsActores";
-import { actorPeliculaDTO } from "../actores/actor.model";
+import { peliculaCreacionDTO } from "./peliculas.model";
 
-export default function FormularioPelicula(props: formularioPeliculaProps) {
-    const [generosSeleccionados, setGenerosSeleccionados] = useState(mapear(props.generosSeleccionados));
-    const [generosNoSeleccionados, setGenerosNoSeleccionados] = useState(mapear(props.generosNoSeleccionados));
+export default function FormularioPeliculas(props: formularioPeliculasProps) {
+    const [generosSeleccionados, setGenerosSeleccionados] =
+        useState(mapear(props.generosSeleccionados));
+    const [generosNoSeleccionados, setGenerosNoSeleccionados] =
+        useState(mapear(props.generosNoSeleccionados));
 
-    const [cinesSeleccionados, setCinesSeleccionados] = useState(mapear(props.cinesSeleccionados));
-    const [cinesNoSeleccionados, setCinesNoSeleccionados] = useState(mapear(props.cinesNoSeleccionados));
+    const [cinesSeleccionados, setCinesSeleccionados] =
+        useState(mapear(props.cinesSeleccionados));
+    const [cinesNoSeleccionados, setCinesNoSeleccionados] =
+        useState(mapear(props.cinesNoSeleccionados));
 
     const [actoresSeleccionados, setActoresSeleccionados] =
         useState<actorPeliculaDTO[]>(props.actoresSeleccionados)
@@ -31,22 +35,27 @@ export default function FormularioPelicula(props: formularioPeliculaProps) {
     }
 
     return (
-
         <Formik
             initialValues={props.modelo}
-            onSubmit={props.onSubmit}
+            onSubmit={(valores, acciones) => {
+                valores.generosIds = generosSeleccionados.map(valor => valor.llave);
+                valores.cinesIds = cinesSeleccionados.map(valor => valor.llave);
+                valores.actores = actoresSeleccionados;
+                props.onSubmit(valores, acciones);
+            }}
             validationSchema={Yup.object({
-                titulo: Yup.string().required("El campo es requerido").primeraLetraMayuscula(),
-
-            })}>
-
-            {propsformik => (
+                titulo: Yup.string().required('Este campo es requerido').primeraLetraMayuscula()
+            })}
+        >
+            {formikProps => (
                 <Form>
-                    <FormGroupText campo="titulo" label="Titulo"></FormGroupText>
-                    <FormGroupCheckbox campo="enCines" label='En cines' />
-                    <FormGroupText campo="trailer" label="Trailer"></FormGroupText>
-                    <FormGroupFecha campo="fechaLanzamiento" label='Fecha Lanzamiento' />
-                    <FormGroupImagen campo='poster' label='Poster' imagenURL={props.modelo.posterURL} />
+                    <FormGroupText label="Título" campo="titulo" />
+                    <FormGroupCheckbox label="En cines" campo="enCines" />
+                    <FormGroupText label="Trailer" campo="trailer" />
+                    <FormGroupFecha campo="fechaLanzamiento" label="Fecha Lanzamiento" />
+                    <FormGroupImagen campo="poster" label="Poster"
+                        imagenURL={props.modelo.posterURL} />
+
                     <div className="form-group">
                         <label>Géneros:</label>
                         <SelectorMultiple seleccionados={generosSeleccionados}
@@ -57,6 +66,7 @@ export default function FormularioPelicula(props: formularioPeliculaProps) {
                             }}
                         />
                     </div>
+
                     <div className="form-group">
                         <label>Cines:</label>
                         <SelectorMultiple seleccionados={cinesSeleccionados}
@@ -80,11 +90,7 @@ export default function FormularioPelicula(props: formularioPeliculaProps) {
                             actores={actoresSeleccionados}
                             listadoUI={(actor: actorPeliculaDTO) =>
                                 <>
-                                    <img src={actor.foto} alt="imagen actor" style={{
-                                        height: '64px',
-                                        marginRight: '10px',
-                                        width: '64px'
-                                    }} /> - {actor.nombre} / <input placeholder="Personaje"
+                                    {actor.nombre} / <input placeholder="Personaje"
                                         type="text" value={actor.personaje}
                                         onChange={e => {
                                             const indice = actoresSeleccionados
@@ -99,22 +105,21 @@ export default function FormularioPelicula(props: formularioPeliculaProps) {
                         />
                     </div>
 
-
-                    <Boton disabled={propsformik.isSubmitting} type='submit'>Enviar</Boton>
-                    <Link className='btn btn-secondary' to='/'>Cancelar</Link>
+                    <Button disabled={formikProps.isSubmitting} type="submit">Enviar</Button>
+                    <Link className="btn btn-secondary" to="/">Cancelar</Link>
                 </Form>
             )}
         </Formik>
     )
 }
 
-interface formularioPeliculaProps {
+
+interface formularioPeliculasProps {
     modelo: peliculaCreacionDTO;
-    onSubmit(valores: peliculaCreacionDTO, accion: FormikHelpers<peliculaCreacionDTO>): void;
+    onSubmit(valores: peliculaCreacionDTO, acciones: FormikHelpers<peliculaCreacionDTO>): void;
     generosSeleccionados: generoDTO[];
     generosNoSeleccionados: generoDTO[];
     cinesSeleccionados: cineDTO[];
     cinesNoSeleccionados: cineDTO[];
     actoresSeleccionados: actorPeliculaDTO[];
-
 }
