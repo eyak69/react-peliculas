@@ -22,6 +22,7 @@ export default function EditarActor() {
         nombreEntidad="Actores"
         transformarFormData={convertirActorAFormData}
         transformar={transformar}
+        
       >
         {(entidad, editar) => (
           <FormularioActor
