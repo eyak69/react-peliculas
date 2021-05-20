@@ -35,6 +35,6 @@ import { generoDTO } from "../generos/genero.model";
     }
 
     export interface landingPageDTO {
-        enCartelera?: peliculaDTO[];
-        enEstreno?: peliculaDTO[];
+        enCines?: peliculaDTO[];
+        proximosEstrenos?: peliculaDTO[];
     }
